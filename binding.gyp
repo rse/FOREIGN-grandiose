@@ -38,7 +38,7 @@
                     "destination":  "build/Release",
                     "files":        [ "<(ndi_dir)/lib/lnx-x86/libndi.so",
                                       "<(ndi_dir)/lib/lnx-x86/libndi.so.5",
-                                      "<(ndi_dir)/lib/lnx-x86/libndi.so.5.0.0" ]
+                                      "<(ndi_dir)/lib/lnx-x86/libndi.so.5.0.3" ]
                 } ],
                 "link_settings": {
                     "libraries":    [ "-Wl,-rpath,'$$ORIGIN'", "-lndi" ],
@@ -50,7 +50,7 @@
                     "destination":  "build/Release",
                     "files":        [ "<(ndi_dir)/lib/lnx-x64/libndi.so",
                                       "<(ndi_dir)/lib/lnx-x64/libndi.so.5",
-                                      "<(ndi_dir)/lib/lnx-x64/libndi.so.5.0.0" ]
+                                      "<(ndi_dir)/lib/lnx-x64/libndi.so.5.0.3" ]
                 } ],
                 "link_settings": {
                     "libraries":    [ "-Wl,-rpath,'$$ORIGIN'", "-lndi" ],
