@@ -42,7 +42,7 @@ const tmp       = require("tmp")
         zip.unzipSync(file1, dir1)
 
         /*  download NDI SDK distribution  */
-        const url2 = "https://downloads.ndi.tv/SDK/NDI_SDK/NDI 5 SDK.exe"
+        const url2 = "https://downloads.ndi.tv/SDK/NDI_SDK/NDI 6 SDK.exe"
         console.log("-- dowloading NDI SDK distribution")
         const data2 = await got(url2, { responseType: "buffer" })
         const file2 = tmp.tmpNameSync()
@@ -76,8 +76,8 @@ const tmp       = require("tmp")
     }
     else if (os.platform() === "darwin") {
         /*  download NDI SDK distribution  */
-        const url1 = "https://downloads.ndi.tv/SDK/NDI_SDK_Mac/Install_NDI_SDK_v5_macOS.pkg"
-        console.log("-- dowloading NDI SDK distribution")
+        const url1 = "https://downloads.ndi.tv/SDK/NDI_SDK_Mac/Install_NDI_SDK_v6_Apple.pkg"
+        console.log("-- dowloading NDI SDK v6 distribution")
         const data1 = await got(url1, { responseType: "buffer" })
         const file1 = tmp.tmpNameSync()
         await fs.promises.writeFile(file1, data1.body, { encoding: null })
@@ -95,9 +95,9 @@ const tmp       = require("tmp")
         console.log("-- assembling NDI SDK subset")
         shell.rm("-rf", "ndi")
         shell.mkdir("-p", "ndi/include")
-        shell.mkdir("-p", "ndi/lib/mac-x64")
-        shell.mv(path.join(dir1, "NDI SDK for macOS/include/*.h"), "ndi/include/")
-        shell.mv(path.join(dir1, "NDI SDK for macOS/lib/macOS/*.dylib"), "ndi/lib/mac-x64/")
+        shell.mkdir("-p", "ndi/lib/mac")
+        shell.mv(path.join(dir1, "NDI SDK for Apple/include/*.h"), "ndi/include/")
+        shell.mv(path.join(dir1, "NDI SDK for Apple/lib/macOS/*.dylib"), "ndi/lib/mac/")
 
         /*  remove temporary files  */
         console.log("-- removing temporary files")
@@ -106,7 +106,7 @@ const tmp       = require("tmp")
     }
     else if (os.platform() === "linux") {
         /*  download NDI SDK distribution  */
-        const url1 = "https://downloads.ndi.tv/SDK/NDI_SDK_Linux/Install_NDI_SDK_v5_Linux.tar.gz"
+        const url1 = "https://downloads.ndi.tv/SDK/NDI_SDK_Linux/Install_NDI_SDK_v6_Linux.tar.gz"
         console.log("-- dowloading NDI SDK distribution")
         const data1 = await got(url1, { responseType: "buffer" })
         const file1 = tmp.tmpNameSync()
@@ -118,7 +118,7 @@ const tmp       = require("tmp")
         shell.mkdir("-p", dir1)
         execa.sync("tar", [ "-z", "-x", "-C", dir1, "-f", file1 ],
             { stdin: "inherit", stdout: "inherit", stderr: "inherit" })
-        execa.sync("sh", [ "-c", `echo "y" | PAGER=cat sh Install_NDI_SDK_v5_Linux.sh` ],
+        execa.sync("sh", [ "-c", `echo "y" | PAGER=cat sh Install_NDI_SDK_v6_Linux.sh` ],
             { cwd: dir1, stdin: "inherit", stdout: "ignore", stderr: "inherit" })
 
         /*  assemble NDI SDK subset  */

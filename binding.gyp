@@ -58,14 +58,14 @@
                     "library_dirs": [ "<(ndi_dir)/lib/lnx-x64" ]
                 }
             } ],
-            [ "OS == 'mac' and target_arch == 'x64'", {
+            [ "OS == 'mac'", {
                 "copies": [ {
                     "destination":  "build/Release",
-                    "files":        [ "<(ndi_dir)/lib/mac-x64/libndi.dylib" ]
+                    "files":        [ "<(ndi_dir)/lib/mac/libndi.dylib" ]
                 } ],
                 "link_settings": {
                     "libraries":    [ "-Wl,-rpath,@loader_path", "-lndi" ],
-                    "library_dirs": [ "<(ndi_dir)/lib/mac-x64" ]
+                    "library_dirs": [ "<(ndi_dir)/lib/mac" ]
                 }
             } ]
         ]
